@@ -1,15 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+    <link rel="stylesheet" href="index.css">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Animaciones UI — Trabajo Final Integrador</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --celeste: #38bdf8;
+      --agua: #22d3ee;
+      --agua-osc: #06b6d4;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2 {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+      text-align: center;
+    }
+    h1.visible, h2.visible { opacity: 1; transform: translateY(0); }
+    h1 { font-size: 3rem; margin-top: 60px; color: var(--celeste); }
+    h2 { font-size: 2rem; color: var(--agua-osc); margin-top: 80px; }
+
+    p, li { max-width: 80ch; margin-inline: auto; color: var(--muted); font-size: 1.05rem; }
+    section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+
+    .accent-line { width: 100px; height: 3px; background: linear-gradient(90deg, var(--agua), var(--celeste)); margin: 15px auto 40px; border-radius: 999px; }
+
+    .container { width: min(1080px, 92vw); margin-inline: auto; text-align: center; }
+
+    /* DEMOSTRACIONES */
+    .demo-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); width: min(1000px, 90vw); margin: 40px auto; }
+    .demo-tile { background: #fff; border: 1px solid var(--line); border-radius: 16px; aspect-ratio: 4/3; display: grid; place-items: center; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; box-shadow: 0 6px 22px rgba(14, 165, 233, 0.15); }
+    .demo-tile:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 16px 40px rgba(34, 211, 238, 0.35); border-color: var(--agua); }
+    .demo-tile svg { width: 80%; height: auto; stroke: var(--ink); fill: none; transition: all 0.4s ease; }
+    .demo-tile:hover svg .pulse { animation: pulse 1.2s infinite ease-in-out; stroke: var(--celeste); }
+    .demo-tile:hover svg .move { transform: translateY(-5px); stroke: var(--agua-osc); }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.7; } }
+
+    footer { text-align: center; padding: 40px; color: var(--muted); font-size: 0.9rem; }
+  </style>
 </head>
 
 <body>
-    <h1> Hello World </h1>
-</body>
+  <section id="inicio" class="container">
+    <h1>Animaciones UI — El Arte del Movimiento en la Interfaz</h1>
+    <div class="accent-line"></div>
+    <p>Exploración del uso de la <strong>computación gráfica</strong> en el diseño de <strong>animaciones UI</strong>: cómo aportan claridad, fluidez y emoción a la experiencia digital. Este sitio representa nuestro <em>Trabajo Final Integrador</em> sobre un campo esencial donde el diseño visual se encuentra con la ingeniería gráfica.</p>
+  </section>
 
+  <section id="historia" class="container">
+    <h2>Historia y evolución de las Animaciones UI</h2>
+    <div class="accent-line"></div>
+    <p>Las animaciones UI nacen con las primeras interfaces gráficas en los años 80, cuando Apple y Xerox introdujeron el concepto de ventanas y transiciones visuales básicas. En los 90, con la web y Flash, se popularizaron las animaciones decorativas, aunque muchas veces innecesarias o pesadas.</p>
+    <p>Durante los 2000s, la llegada de <strong>CSS Transitions</strong> y <strong>CSS Animations</strong> marcó un cambio: las animaciones se volvieron parte integral del flujo interactivo. Apple con iOS y Google con <strong>Material Design</strong> establecieron principios claros: el movimiento debía tener propósito.</p>
+    <p>Hoy, con <strong>WebGL, Lottie, y Motion Design Systems</strong>, las animaciones UI se apoyan en hardware gráfico, buscando no solo belleza, sino también accesibilidad, rendimiento y coherencia.</p>
+  </section>
+
+  <section id="fundamentos" class="container">
+    <h2>Fundamentos gráficos y técnicas aplicadas</h2>
+    <div class="accent-line"></div>
+    <p>Las animaciones UI aplican los mismos fundamentos de la computación gráfica: interpolación, rasterización y renderizado. El movimiento fluido proviene de cálculos matemáticos que determinan cómo varían las posiciones, colores y opacidades de los elementos en cada frame.</p>
+    <ul>
+      <li><strong>Interpolación:</strong> transición progresiva entre estados, usando curvas de Bézier.</li>
+      <li><strong>Transformaciones 2D/3D:</strong> rotar, trasladar, escalar o deformar objetos visuales.</li>
+      <li><strong>Renderizado GPU:</strong> procesamiento paralelo de animaciones para mantener 60 FPS.</li>
+      <li><strong>Composición:</strong> mezcla de capas visuales con transparencias, sombras y profundidad.</li>
+    </ul>
+  </section>
+
+  <section id="innovacion" class="container">
+    <h2>Curiosidades e innovaciones actuales</h2>
+    <div class="accent-line"></div>
+    <p>Hoy las animaciones UI evolucionan hacia un equilibrio entre estética y funcionalidad. Algunos avances recientes incluyen:</p>
+    <ul>
+      <li><strong>IA generativa:</strong> propone microinteracciones adaptadas al usuario.</li>
+      <li><strong>Motion responsivo:</strong> el movimiento cambia según el dispositivo o velocidad del scroll.</li>
+      <li><strong>Interactividad física:</strong> simula gravedad, rebotes o fricción mediante ecuaciones.</li>
+      <li><strong>Accesibilidad:</strong> la opción <code>prefers-reduced-motion</code> permite respetar a usuarios con sensibilidad al movimiento.</li>
+    </ul>
+    <p>Las tendencias apuntan a un diseño más sensorial y sostenible: animaciones suaves, significativas y con propósito.</p>
+  </section>
+
+  <section id="demostraciones" class="container">
+    <h2>Demostraciones Interactivas</h2>
+    <div class="accent-line"></div>
+    <p>Ejemplos de microinteracciones gráficas inspiradas en principios de movimiento natural. Pasá el cursor sobre cada ejemplo para activarlas.</p>
+    <div class="demo-grid">
+      <div class="demo-tile">
+        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <line x1="60" y1="60" x2="240" y2="60" stroke-width="3" class="move" />
+          <circle cx="60" cy="60" r="10" class="pulse" />
+          <circle cx="150" cy="60" r="10" />
+          <circle cx="240" cy="60" r="10" class="pulse" />
+        </svg>
+      </div>
+      <div class="demo-tile">
+        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 150 A100 100 0 0 1 250 150" stroke-width="4" />
+          <line x1="150" y1="150" x2="230" y2="70" stroke-width="3" class="move" />
+          <circle cx="230" cy="70" r="12" class="pulse" />
+        </svg>
+      </div>
+      <div class="demo-tile">
+        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <line x1="150" y1="40" x2="150" y2="140" stroke-width="3" />
+          <circle cx="150" cy="160" r="14" class="pulse" />
+        </svg>
+      </div>
+      <div class="demo-tile">
+        <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="80" width="180" height="10" class="move" />
+          <rect x="60" y="110" width="180" height="10" class="pulse" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="reflexion" class="container">
+    <h2>Reflexión y conclusiones</h2>
+    <div class="accent-line"></div>
+    <p>Las animaciones UI son un puente entre la técnica y la emoción. Integran conceptos de física, tiempo y color para mejorar la comprensión visual. Lejos de ser mero adorno, hoy representan un lenguaje de interacción.</p>
+    <p>El futuro de las animaciones UI está ligado a la <strong>computación gráfica en tiempo real</strong> y a la <strong>inteligencia artificial adaptativa</strong>. Ambas impulsarán interfaces más naturales, expresivas y centradas en el usuario.</p>
+  </section>
+
+  <footer>
+    <p>© 2025 · Animaciones UI — Proyecto Final Integrador · Universidad Católica de Córdoba</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('h1, h2').forEach(el => observer.observe(el));
+  </script>
+</body>
 </html>
